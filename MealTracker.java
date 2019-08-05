@@ -16,12 +16,56 @@ import java.util.ArrayList;
 
 public class MealTracker{
 
-  public ArrayList<Meal> meals = new ArrayList<Meal>();
-  public User user;
+  private ArrayList<Meal> meals = new ArrayList<Meal>();
+  private User user;
 
   public MealTracker(User _user, ArrayList<Meal> _meals){
     user = _user;
     meals = _meals;
   }
 
+  public MealTracker(User _user, Meal _meal){
+    user = _user;
+    meals.add(_meal);
+  }
+
+  void addMeal(Meal meal){
+    meals.add(meal);
+  }
+
+  void viewMeals(){
+    for(Meal m: meals){
+      m.print();
+    }
+  }
+
+  int getMealCount(){
+    return meals.size();
+  }
+
+  // what percent of meals are onTrack
+  double getAdherence(){
+    int mealOnTrack = 0;
+    for (Meal m: meals){
+      if (m.isComplete()){
+        mealOnTrack++;
+      }
+    }
+
+    // Take the number of meals onTrack/ number of meals
+
+    return (mealOnTrack/meals.size())*100;
+  }
+
+  boolean isOnTrack(){
+
+    System.out.println("User target adherence: " + user.getTargetAdherence());
+    System.out.println("User Actual adherence: " + this.getAdherence());
+
+    if (user.getTargetAdherence()<=this.getAdherence()){
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

@@ -17,4 +17,27 @@ public class Nutrients {
 
   }
 
+  double getCalories(){
+    return calories;
+  }
+
+  double getFat(){
+    return fat;
+  }
+
+  double getCarbs(){
+    return carbohydrates;
+  }
+
+  double getProtein(){
+    return protein;
+  }
+
+  public void print(){
+    System.out.println("Calories: " + getCalories());
+    System.out.println("Fat: " + getFat());
+    System.out.println("Carbs: " + getCarbs());
+    System.out.println("Protein: " + getProtein());
+  }
+
 }

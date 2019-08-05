@@ -7,16 +7,13 @@ import java.util.ArrayList;
 // * `double getFat`
 // * `double getCarbohydrates`
 // * `double getProtein`
-
 // * `double getName`
-// * `ArrayList<Category> getCategories`
-// * `void addCategory`
 
-public class Food{
+public class Food {
 
-  public Nutrients nutrients;
-  public String name;
-  public ArrayList<Category> categories = new ArrayList<Category>();
+  private Nutrients nutrients;
+  private String name;
+  private Category category;
 
   public Food(String _name, 
               double _calories, double _fat, double _carbs, double _protein, 
@@ -24,7 +21,7 @@ public class Food{
 
     name = _name;
     nutrients = new Nutrients(_calories, _fat, _carbs, _protein);
-    categories.add(_cat);
+    category = _cat;
   }
 
   public Food(String _name, 
@@ -33,7 +30,26 @@ public class Food{
 
     name = _name;
     nutrients = _nutrients;
-    categories.add(_cat);
+    category = _cat;
   }
+
+  Nutrients getNutrients(){
+    return nutrients;
+  }
+
+  String getName(){
+    return name;
+  }
+
+  Category getCategory(){
+    return category;
+  }
+
+  void print(){
+    System.out.println("Food: " + name);
+    System.out.println("Category: " + category);
+    nutrients.print();
+  }
+
 
 }
